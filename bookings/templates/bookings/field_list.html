@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Field Booking System</title>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .field-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        .book-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Available Fields</h1>
+        {% for field in fields %}
+            <div class="field-card">
+                <h2>{{ field.name }}</h2>
+                <p>{{ field.description }}</p>
+                <p>Capacity: {{ field.capacity }} people</p>
+                <p>Price: ${{ field.price_per_hour }}/hour</p>
+                <a href="{% url 'book_field' field.id %}" class="book-button">Book Now</a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
